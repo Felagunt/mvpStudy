@@ -6,42 +6,24 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mvc.view.Presenter
+import com.example.mvc.view.PresenterFactory
 
-class MainActivity : AppCompatActivity(), Contract.View {
-    private lateinit var textView: TextView
-    private lateinit var button: Button
-    private lateinit var progressBar: ProgressBar
-    private lateinit var presenter: Presenter
+class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Mvc)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textView = findViewById(R.id.textView)
-        button = findViewById(R.id.button)
-        progressBar = findViewById(R.id.progressBar)
 
-        presenter = PresenterFactory.providePresenter(this) as Presenter
 
-        this.button.setOnClickListener {
-            presenter.onButtonClick()
+        if(savedInstanceState == null) {
+            val fragment = BlankFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit()
         }
     }
 
-    override fun showProgress() {
-        progressBar.visibility = View.VISIBLE
-        textView.visibility = View.VISIBLE
-    }
-
-    override fun hidProgress() {
-        progressBar.visibility = View.GONE
-        textView.visibility = View.VISIBLE
-    }
-
-    override fun setString(string: String?) {
-        textView.text = string
-    }
-
-
 }
-

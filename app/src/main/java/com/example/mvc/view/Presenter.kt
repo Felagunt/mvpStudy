@@ -1,4 +1,6 @@
-package com.example.mvc
+package com.example.mvc.view
+
+import com.example.mvc.Contract
 
 class Presenter(
     private var mainView: Contract.View?,
