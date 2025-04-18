@@ -1,13 +1,8 @@
 package com.example.mvc
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mvc.view.Presenter
-import com.example.mvc.view.PresenterFactory
+import com.example.mvc.view.list.Recycler
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
 
         if(savedInstanceState == null) {
-            val fragment = BlankFragment()
+            val fragment = Recycler()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit()

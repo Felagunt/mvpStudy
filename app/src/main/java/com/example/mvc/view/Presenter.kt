@@ -1,6 +1,7 @@
 package com.example.mvc.view
 
 import com.example.mvc.Contract
+import com.example.mvc.Item
 
 class Presenter(
     private var mainView: Contract.View?,
@@ -18,10 +19,10 @@ class Presenter(
         mainView = null
     }
 
-    override fun onFinished(string: String?) {
-        if(mainView != null) {
-            mainView!!.setString(string)
-            mainView!!.hidProgress()
+    override fun onFinished(courses: List<Item>) {
+        mainView?.apply {
+            hidProgress()
+            displayCourses(courses)
         }
     }
 }

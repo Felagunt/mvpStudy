@@ -7,12 +7,12 @@ interface Contract {
 
         fun hidProgress()
 
-        fun setString(string: String?)
+        fun displayCourses(course: List<Item>)
     }
 
     interface Model {
         interface OnFinishedListener {
-            fun onFinished(string: String?)
+            fun onFinished(course: List<Item>)
         }
         fun getNextCourse(onFinishedListener: OnFinishedListener?)
     }
